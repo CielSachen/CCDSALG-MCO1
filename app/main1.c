@@ -54,7 +54,6 @@ int main(void) {
     sscanf(input_buffer, "%ld", &point_count);
 
     const size_t points_memory_size = sizeof(Point) * point_count;
-
     Point *points = (Point *)malloc(points_memory_size);
     size_t actual_point_count = 0;
 
@@ -79,7 +78,10 @@ int main(void) {
     Point *convex_set_points;
     size_t convex_set_point_count;
 
-    slow_scan(points, point_count, &convex_set_points, &convex_set_point_count);
+    if (!slow_scan(points, point_count, &convex_set_points, &convex_set_point_count)) {
+        // The prior function already prints an error message.
+        return 1;
+    }
 
     free(points);
 

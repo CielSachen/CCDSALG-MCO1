@@ -23,7 +23,7 @@
 #include "convex_hull/sort.h"
 #include "convex_hull/stack.h"
 
-void slow_scan(Point points[], const size_t point_count, Point *convex_set_points[], size_t *convex_set_point_count) {
+bool slow_scan(Point points[], const size_t point_count, Point *convex_set_points[], size_t *convex_set_point_count) {
     const clock_t start_time = clock();
 
     size_t anchor_point_index = 0;
@@ -57,6 +57,13 @@ void slow_scan(Point points[], const size_t point_count, Point *convex_set_point
         }
 
         push(&stack, current_point);
+
+        if (is_full(&stack)) {
+            printf("The stack has overflowed because of having too many points!\n");
+
+            return false;
+        }
+
         push(&stack, next_point);
     }
 
@@ -72,4 +79,6 @@ void slow_scan(Point points[], const size_t point_count, Point *convex_set_point
     const clock_t end_time = clock();
 
     printf("Execution Time: %lfms\n", (double)(end_time - start_time) / CLOCKS_PER_SEC * 1000);
+
+    return true;
 }

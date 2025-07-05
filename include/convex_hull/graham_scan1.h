@@ -18,10 +18,11 @@
 #ifndef CONVEX_HULL_GRAHAM_SCAN1_H_
 #define CONVEX_HULL_GRAHAM_SCAN1_H_
 
+#include <stdbool.h>
 #include <stddef.h>
 
 #include "geometry.h"
 
-void slow_scan(Point points[], const size_t point_count, Point *convex_set_points[], size_t *convex_set_point_count);
+bool slow_scan(Point points[], const size_t point_count, Point *convex_set_points[], size_t *convex_set_point_count);
 
 #endif  // CONVEX_HULL_GRAHAM_SCAN1_H_
