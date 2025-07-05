@@ -11,6 +11,14 @@ include(GoogleTest)
 
 enable_testing()
 
+add_executable(geometry_test geometry_test.cpp)
+target_include_directories(geometry_test
+  PRIVATE ${HEADER_DIR})
+target_link_libraries(geometry_test
+                      PRIVATE graham_scan_utils
+                      PUBLIC GTest::gtest_main)
+gtest_discover_tests(geometry_test)
+
 add_executable(sort_test sort_test.cpp)
 target_include_directories(sort_test
   PRIVATE ${HEADER_DIR})
