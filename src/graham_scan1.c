@@ -71,5 +71,5 @@ void slow_scan(Point points[], const size_t point_count, Point *convex_set_point
 
     const clock_t end_time = clock();
 
-    printf("Execution Time: %ld\n", end_time - start_time);
+    printf("Execution Time: %lfms\n", (double)(end_time - start_time) / CLOCKS_PER_SEC * 1000);
 }
