@@ -11,7 +11,7 @@ include(GoogleTest)
 
 enable_testing()
 
-add_executable(sort_test sort.cpp)
+add_executable(sort_test sort_test.cpp)
 target_include_directories(sort_test
   PRIVATE ${HEADER_DIR})
 target_link_libraries(sort_test
@@ -19,7 +19,7 @@ target_link_libraries(sort_test
                       PUBLIC GTest::gtest_main)
 gtest_discover_tests(sort_test)
 
-add_executable(stack_test stack.cpp)
+add_executable(stack_test stack_test.cpp)
 target_include_directories(stack_test
   PRIVATE ${HEADER_DIR})
 target_link_libraries(stack_test
