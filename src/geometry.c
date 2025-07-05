@@ -15,21 +15,51 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/**
+ * @file geometry.c
+ * @brief The source code containing the implementation of the geometry utility functions.
+ * @copyright GNU AGPLv3
+ */
+
 #include "convex_hull/geometry.h"
 
 #include <math.h>
 #include <stdlib.h>
 
+/**
+ * @brief Calculates the distance between two points.
+ * @details This uses the Pythagorean theorem to calculate the distance. The delta y and the delta x serves as the
+ * height and the base.
+ * @param[in] a The first point to use.
+ * @param[in] b The second point to use.
+ * @return The distance between the two points.
+ */
 double distance(const Point *const a, const Point *const b) {
     return sqrt(pow(fabs(a->x - b->x), 2) + pow(fabs(a->y - b->y), 2));
 }
 
+/**
+ * @brief Calculates the polar angle of a point.
+ * @details This uses the arctangent of the delta y divided by the delta x.
+ * @param[in] point The point to calculate the polar angle of.
+ * @param[in] anchor_point The anchor or origin point to use.
+ * @return The polar angle of a point.
+ */
 double polar_angle(const Point *const point, const Point *const anchor_point) {
     const double angle = atan2(point->y - anchor_point->y, point->x - anchor_point->x);
 
     return isnan(angle) ? 0 : angle;
 }
 
+/**
+ * @brief Calculates the orientation of the angle formed by connecting three points.
+ * @details This uses the cross product of the two vectors formed by the three points. The result is the area of the
+ * parallelogram the vectors define.
+ * @param[in] a The first point to use.
+ * @param[in] b The second point or vertex to use.
+ * @param[in] c The third point to use.
+ * @return `-1` if the angle is clockwise, `1` if counter-clockwise, or `0` if collinear.
+ */
 int orientation(const Point *const a, const Point *const b, const Point *const c) {
     const double area = (b->x - a->x) * (c->y - a->y) - (b->y - a->y) * (c->x - a->x);
 
