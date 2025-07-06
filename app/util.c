@@ -46,6 +46,6 @@ void print_convex_set_points(FILE *const output_file, const Point points[], size
     for (size_t i = 0; i < point_count; i++) {
         const Point *const point = &points[i];
 
-        fprintf(output_file, "%9.6lf  %9.6lf\n", point->x, point->y);
+        fprintf(output_file, "%11.6lf  %11.6lf\n", point->x, point->y);
     }
 }
