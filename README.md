@@ -43,10 +43,12 @@ cmake --build ./build --target all
 <img 
   src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/De_La_Salle_University_Seal.svg/2048px-De_La_Salle_University_Seal.svg.png"
   height="125px"
+  width="125px"
   alt="DLSU Seal">
 <img
   src="https://www.dlsu.edu.ph/wp-content/uploads/2019/06/ccs-logo.png"
   height="125px"
+  width="125px"
   alt="CCS Logo">
 
 ## De La Salle University (Undergraduate)
