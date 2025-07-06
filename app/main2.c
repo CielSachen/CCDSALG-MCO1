@@ -28,6 +28,7 @@
 #include <string.h>
 
 #include "convex_hull/graham_scan2.h"
+#include "convex_hull/stack.h"
 #include "util.h"
 
 /** @brief The entry point of the convex hull program using a faster sorting algorithm. */
@@ -61,6 +62,15 @@ int main(void) {
     sscanf(input_buffer, "%d", &point_count);
 
     const size_t points_memory_size = sizeof(Point) * point_count;
+
+    if (points_memory_size > sizeof(Point) * MAX_STACK_SIZE) {
+        fclose(input_file);
+
+        printf("The problem size is too big! The application is at risk of a stack overflow error!");
+
+        return 1;
+    }
+
     Point *points = (Point *)malloc(points_memory_size);
     int actual_point_count = 0;
 
