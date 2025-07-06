@@ -48,7 +48,7 @@ int main(void) {
 
     String input_buffer;
 
-    size_t point_count;
+    int point_count;
 
     if (fgets(input_buffer, sizeof input_buffer, input_file) == NULL) {
         fclose(input_file);
@@ -58,11 +58,11 @@ int main(void) {
         return 1;
     }
 
-    sscanf(input_buffer, "%ld", &point_count);
+    sscanf(input_buffer, "%d", &point_count);
 
     const size_t points_memory_size = sizeof(Point) * point_count;
     Point *points = (Point *)malloc(points_memory_size);
-    size_t actual_point_count = 0;
+    int actual_point_count = 0;
 
     while (fgets(input_buffer, sizeof input_buffer, input_file) != NULL) {
         Point *point = &points[actual_point_count++];

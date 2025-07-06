@@ -58,10 +58,10 @@ void get_string_input(char output[], const size_t max_length) {
  * @param[in] points The points to print.
  * @param point_count The number of points to print.
  */
-void print_convex_set_points(FILE *const output_file, const Point points[], size_t point_count) {
-    fprintf(output_file, "%ld\n", point_count);
+void print_convex_set_points(FILE *const output_file, const Point points[], int point_count) {
+    fprintf(output_file, "%d\n", point_count);
 
-    for (size_t i = 0; i < point_count; i++) {
+    for (int i = 0; i < point_count; i++) {
         const Point *const point = &points[i];
 
         fprintf(output_file, "%11.6lf  %11.6lf\n", point->x, point->y);
