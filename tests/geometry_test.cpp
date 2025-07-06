@@ -4,6 +4,8 @@ extern "C" {
 
 #include <gtest/gtest.h>
 
+#include <cmath>
+
 TEST(Distance, ReturnsTheDistanceBetweenAAndB) {
     const Point a = {-2, 3};
     const Point b = {4, -7};
