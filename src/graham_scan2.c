@@ -15,6 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/**
+ * @file graham_scan2.c
+ * @brief The source code containing the implementation of the fast graham scan.
+ * @copyright GNU AGPLv3
+ */
+
 #include "convex_hull/graham_scan2.h"
 
 #include <stdio.h>
@@ -23,6 +29,18 @@
 #include "convex_hull/sort.h"
 #include "convex_hull/stack.h"
 
+/**
+ * @brief Scans points to find the points that would make up the convex hull using a faster sorting algorithm.
+ * @details This locates the point with the lowest y-coordinate, and lowest x-coordinate if multiple, and sets it as the
+ * anchor point. The points are sorted, using the heap sort algorithm. Then, they are checked one-by-one for the
+ * direction of the angle they formed. All points, starting from the anchor point, that have a counter-clockwise
+ * direction form the convex hull.
+ * @param[in,out] points The points to scan through. This will be mutated to be sorted.
+ * @param point_count The number of points to scan through.
+ * @param[out] convex_set_points The resulting points from the created convex set.
+ * @param[out] convex_set_point_count The number of resulting points from the created convex set.
+ * @return Whether the scan was completed.
+ */
 bool fast_scan(Point points[], const size_t point_count, Point *convex_set_points[], size_t *convex_set_point_count) {
     const clock_t start_time = clock();
 
