@@ -15,6 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/**
+ * @file main1.c
+ * @brief The source code containing the implementation of the convex hull program using a faster sorting algorithm.
+ * @copyright GNU AGPLv3
+ */
+
 #include <errno.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -24,6 +30,7 @@
 #include "convex_hull/graham_scan2.h"
 #include "util.h"
 
+/** @brief The entry point of the convex hull program using a faster sorting algorithm. */
 int main(void) {
     printf("Input File Name: ");
 

@@ -15,6 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/**
+ * @file util.h
+ * @brief The header containing the APIs of the IO utility functions.
+ * @copyright GNU AGPLv3
+ */
+
 #ifndef UTIL_H_
 #define UTIL_H_
 
@@ -22,12 +28,25 @@
 
 #include "convex_hull/geometry.h"
 
+/** @brief A string that can contain a maximum of 30 characters (31 including the newline character). */
 typedef char String[31];
 
+/** @brief Clears the input buffer of all characters awaiting scanning. */
 void clear_input_buffer(void);
 
+/**
+ * @brief Gets a string typed input from the user.
+ * @param[out] output The input received from the user.
+ * @param max_length The maximum length of the output string.
+ */
 void get_string_input(char output[], const size_t max_length);
 
+/**
+ * @brief Prints and formats points one-by-one into a text file.
+ * @param[in] output_file The text file to print into.
+ * @param[in] points The points to print.
+ * @param point_count The number of points to print.
+ */
 void print_convex_set_points(FILE *const output_file, const Point points[], size_t point_count);
 
 #endif  // UTIL_H_
