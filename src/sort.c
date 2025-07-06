@@ -15,14 +15,32 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/**
+ * @file sort.c
+ * @brief The source code containing the implementation of the sorting utility functions.
+ * @copyright GNU AGPLv3
+ */
+
 #include "convex_hull/sort.h"
 
+/**
+ * @brief Swaps the values of two pointers.
+ * @param[in,out] a The first pointer to swap the value of.
+ * @param[in,out] b The second pointer to swap the value of.
+ */
 void swap(Point *a, Point *b) {
     const Point temporary = *a;
     *a = *b;
     *b = temporary;
 }
 
+/**
+ * @brief Sorts points by their polar angle, or distance if the polar angles are equal, in ascending order.
+ * @details This uses the selection sort algorithm to sort.
+ * @param[in,out] points The points to sort.
+ * @param point_count The number of points to sort.
+ * @param[in] anchor_point The anchor or origin point to use.
+ */
 void selection_sort(Point points[], const size_t point_count, const Point *const anchor_point) {
     for (size_t i = 0; i < point_count - 1; i++) {
         size_t smallest_index = i;
@@ -47,6 +65,14 @@ void selection_sort(Point points[], const size_t point_count, const Point *const
     }
 }
 
+/**
+ * @brief Checks if a point is larger than another point.
+ * @details This checks if the polar angle is greater, or if the distance is greater when the polar angles are equal.
+ * @param[in] a The point to check.
+ * @param[in] b The point to check against.
+ * @param[in] anchor_point The anchor or origin point to use.
+ * @return Whether the point is larger than the other point.
+ */
 bool is_larger(const Point *const a, const Point *const b, const Point *const anchor_point) {
     const double a_polar_angle = polar_angle(a, anchor_point);
     const double b_polar_angle = polar_angle(b, anchor_point);
@@ -55,6 +81,14 @@ bool is_larger(const Point *const a, const Point *const b, const Point *const an
            (a_polar_angle == b_polar_angle && distance(anchor_point, a) > distance(anchor_point, b));
 }
 
+/**
+ * @brief Heapifies points by their polar angle, or distance if the polar angles are equal, in ascending order.
+ * @details This swaps points until all "parent nodes" are larger than their children.
+ * @param[in,out] points The points to heapify.
+ * @param point_count The number of points to heapify.
+ * @param root_index The index of the root point to use.
+ * @param[in] anchor_point The anchor or origin point to use.
+ */
 void heapify(Point points[], const size_t point_count, const size_t root_index, const Point *const anchor_point) {
     size_t largest_index = root_index;
 
@@ -77,6 +111,13 @@ void heapify(Point points[], const size_t point_count, const size_t root_index, 
     }
 }
 
+/**
+ * @brief Sorts points by their polar angle, or distance if the polar angles are equal, in ascending order.
+ * @details This uses the heap sort algorithm to sort.
+ * @param[in,out] points The points to sort.
+ * @param point_count The number of points to sort.
+ * @param[in] anchor_point The anchor or origin point to use.
+ */
 void heap_sort(Point points[], const size_t point_count, const Point *const anchor_point) {
     for (int i = point_count / 2 - 1; i >= 0; i--) {
         heapify(points, point_count, i, anchor_point);
