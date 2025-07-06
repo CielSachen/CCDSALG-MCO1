@@ -16,41 +16,30 @@
  */
 
 /**
- * @file util.c
- * @brief The source code containing the implementation of the IO utility functions.
+ * @file utils.h
+ * @brief The header containing the APIs of the IO utility functions.
  * @copyright GNU AGPLv3
  */
 
-#include "util.h"
+#ifndef UTILS_H_
+#define UTILS_H_
 
-#include <string.h>
+#include <stdio.h>
+
+#include "convex_hull/geometry.h"
+
+/** @brief A string that can contain a maximum of 30 characters (31 including the newline character). */
+typedef char String[31];
 
 /** @brief Clears the input buffer of all characters awaiting scanning. */
-void clear_input_buffer(void) {
-    int excess_character;
-
-    while ((excess_character = getchar()) != '\n' && excess_character != EOF) {
-    }
-}
+void clear_input_buffer(void);
 
 /**
  * @brief Gets a string typed input from the user.
  * @param[out] output The input received from the user.
  * @param max_length The maximum length of the output string.
  */
-void get_string_input(char output[], const size_t max_length) {
-    fflush(stdout);
-
-    fgets(output, max_length, stdin);
-
-    const size_t last_index = strlen(output) - 1;
-
-    if (output[last_index] == '\n') {
-        output[last_index] = '\0';
-    } else {
-        clear_input_buffer();
-    }
-}
+void get_string_input(char output[], const size_t max_length);
 
 /**
  * @brief Prints and formats points one-by-one into a text file.
@@ -58,12 +47,6 @@ void get_string_input(char output[], const size_t max_length) {
  * @param[in] points The points to print.
  * @param point_count The number of points to print.
  */
-void print_convex_set_points(FILE *const output_file, const Point points[], int point_count) {
-    fprintf(output_file, "%d\n", point_count);
+void print_convex_set_points(FILE *const output_file, const Point points[], int point_count);
 
-    for (int i = 0; i < point_count; i++) {
-        const Point *const point = &points[i];
-
-        fprintf(output_file, "%11.6lf  %11.6lf\n", point->x, point->y);
-    }
-}
+#endif  // UTILS_H_

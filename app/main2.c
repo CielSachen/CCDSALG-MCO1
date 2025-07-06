@@ -29,7 +29,7 @@
 
 #include "convex_hull/graham_scan2.h"
 #include "convex_hull/stack.h"
-#include "util.h"
+#include "utils.h"
 
 /** @brief The entry point of the convex hull program using a faster sorting algorithm. */
 int main(void) {
